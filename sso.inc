@@ -17,7 +17,7 @@
         GetSSOToken = token
     End Function
 
-    Function ValidateAndRouteSSO(defaultPage, ssoPageRoute)
+    Function ValidateAndRouteSSO(ssoPageRoute)
 
         set threadUtil = Server.CreateObject("ASPUtilities.ThreadUtil")
         res = threadUtil.RevertToProcessUser()
@@ -51,7 +51,6 @@
             if (tokenValue <> "") then
 
                 Session("ADFS_USERNAME") = tokenValue
-                Response.Redirect(defaultPage)
             else
                 Response.Redirect(ssoPageRoute)
             end if
